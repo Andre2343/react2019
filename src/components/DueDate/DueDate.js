@@ -1,10 +1,11 @@
 import React from 'react'
 import moment from 'moment';
 
-const DueDate = ({ date, format}) => {
-  const formatted = React.useMemo(() => format ? moment(date).format(format) : moment(date).fromNow(), [date, format]);
+const DueDate = ({date,format}) => {
+  //const formatted = React =>  moment(date).format(format) ;
+    const formatted = (moment(date).format('YYYY-MM-DD') );
 
-  return (
+    return (
     <p className="text-danger">{formatted}</p>
   );
 }

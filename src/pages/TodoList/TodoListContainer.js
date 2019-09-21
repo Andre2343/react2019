@@ -13,7 +13,10 @@ export default class TodoListContainer extends Component {
   }, {
     title: 'Show all',
     action: () => { this.status='all'; this._refetchData() }
-  }]
+  } , {
+    title: 'Show close',
+  action: () => { this.status='close'; this._refetchData() }
+ } ]
 
   status = 'open'
 
@@ -35,6 +38,9 @@ export default class TodoListContainer extends Component {
         break;
       case 'all':
         todos = TodoDataService.getAll();
+        break;
+      case 'close':
+        todos = TodoDataService.getClose();
         break;
       default: 
         todos = TodoDataService.getOpen();

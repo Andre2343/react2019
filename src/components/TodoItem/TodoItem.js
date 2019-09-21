@@ -3,19 +3,6 @@ import { Button, FormGroup, UncontrolledTooltip, Label } from 'reactstrap';
 import { DueDate } from 'components';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import CloseButton from "react-dates/esm/components/CloseButton"; // Import css
-
-
-
-
-
-
-
-
-
-
-
-
 
 const TodoItem = (props) => {
     const { message, dueDate, open, _id, onChange, onRemove, isEdit } = props;
@@ -78,32 +65,7 @@ const TodoItem = (props) => {
           </Fragment>
         : null}
       </td>
-      {/*
-        <td className="td-actions text-right">
-          <Button
-            color="link"
-            id={`tooltip_${_id}`}
-            title=""
-            type="button"
-            onClick={() => toggleEdit()}
-          >
-            <i className="tim-icons icon-pencil" />
-          </Button>
-          <UncontrolledTooltip
-            delay={0}
-            target={`tooltip_${_id}`}
-            placement="right"
-          >
-            Edit Task
-          </UncontrolledTooltip>
-        </td>
-      */}
         </tr>
     )
 }
-
-
-
-
-
 export default TodoItem;

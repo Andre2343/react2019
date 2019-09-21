@@ -1,16 +1,31 @@
 import React, { Fragment } from 'react'
 import { Button, FormGroup, UncontrolledTooltip, Label } from 'reactstrap';
 import { DueDate } from 'components';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import CloseButton from "react-dates/esm/components/CloseButton"; // Import css
+
+
+
+
+
+
+
+
+
+
+
+
 
 const TodoItem = (props) => {
-  const { message, dueDate, open, _id, onChange, onRemove, isEdit } = props;
-  return (
-    <tr>
-      <td width="30">
-        <FormGroup check>
-          <Label check>
-            <input checked={!open} onChange={onChange} type="checkbox" />
-            <span className="form-check-sign">
+    const { message, dueDate, open, _id, onChange, onRemove, isEdit } = props;
+    return (
+        <tr>
+            <td width="30">
+                <FormGroup check>
+                    <Label check>
+                        <input checked={!open} onChange={onChange} type="checkbox" />
+                        <span className="form-check-sign">
               <span className="check" />
             </span>
           </Label>
@@ -30,8 +45,27 @@ const TodoItem = (props) => {
               id={`tooltip_remove_${_id}`}
               title=""
               type="button"
-              onClick={onRemove}
-            >
+              onClick={()=>confirmAlert({
+                  customUI: ({ onClose }) => {
+                      return (
+                          <div className='custom-ui'>
+                              <h1 style={{color:'black'}}>Are you sure?</h1>
+                              <p>You want to delete this file?</p>
+                              <button onClick={onClose}>No</button>
+                              <button
+                                  onClick={() => {
+                                      onRemove();
+                                      onClose();
+                                  }}
+                              >
+                                  Yes, Delete it!
+                              </button>
+                          </div>
+                      );
+                  }
+              })
+              }
+                 >
               <i className="tim-icons icon-trash-simple" />
             </Button>
             <UncontrolledTooltip
@@ -64,8 +98,12 @@ const TodoItem = (props) => {
           </UncontrolledTooltip>
         </td>
       */}
-    </tr>
-  )
+        </tr>
+    )
 }
+
+
+
+
 
 export default TodoItem;

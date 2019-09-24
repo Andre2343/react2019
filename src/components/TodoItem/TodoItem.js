@@ -21,7 +21,7 @@ const TodoItem = (props) => {
       <td>
         <p className="title">{isEdit ? 'editing:': null} {message}</p>
         { dueDate ? (
-          <DueDate date={dueDate} />
+          <DueDate date={dueDate} open={open}/>
         ) : null }
       </td>
       <td className="td-actions text-right">
